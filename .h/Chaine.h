@@ -6,9 +6,8 @@ struct chaine
     char *text;
     unsigned int taille;
 };
-
 typedef struct chaine Chaine;
 
-void sisaireChaine(Chaine *chaine);
+Chaine saisirChaine();
 
 #endif // CHAINE_H
