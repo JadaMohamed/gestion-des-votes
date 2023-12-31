@@ -7,6 +7,8 @@ struct chaine
     unsigned int taille;
 };
 
-#endif
+typedef struct chaine Chaine;
 
-void sisairChaine(struct chaine s);
+void sisaireChaine(Chaine *chaine);
+
+#endif // CHAINE_H

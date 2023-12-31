@@ -1,0 +1,1 @@
+static unsigned int NOMBRE_DES_ROLES = 0; // Pour l'utiliser en auto-incrémentation des IDs

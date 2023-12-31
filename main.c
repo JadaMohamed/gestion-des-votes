@@ -13,8 +13,17 @@
 
 
 int main() {
+	
+	Utilisateur a;
+	a.Email.text= "med@gmail";
+	a.DateInscription.anne= 2002;
+	
+	printf("%s %u", a.Email.text, a.DateInscription.anne);
+	
+	
     printf("Hello world");
     //7amme9na Hadchyy 
     getchar();
     return 0;
+    
 }

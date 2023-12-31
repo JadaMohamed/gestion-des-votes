@@ -1,14 +1,13 @@
 #include "Date.h"
 
-static unsigned int NOMBRE_DES_VOTES = 0; // Pour l'utiliser en auto-incrémentation des IDs
-
-struct Vote
+struct vote
 {
     unsigned int IdUtilisateur;
     unsigned int IdElection;
     unsigned int IdOption;
-    struct date DateVote;
-} vote;
+    Date DateVote;
+};
+typedef struct vote Vote;
 
 // Créez une fonction pour chercher un Vote dans le fichier .text par son ID d'utilisateur.
 void afficherVotesParUtilisateurId(unsigned int IdUtilisateur);
@@ -17,13 +16,13 @@ void afficherVotesParUtilisateurId(unsigned int IdUtilisateur);
 void afficherVotesParUtilisateurIdDunElection(unsigned int IdUtilisateur, unsigned int IdElection);
 
 // Créez une fonction pour saisir des données dans une structure Vote à partir de l'utilisateur.
-void saisirVote(struct Vote* vote);
+void saisirVote(Vote vote);
 
 // Créez une fonction pour afficher les détails d'une structure Vote.
-void afficherVote(const struct Vote* vote);
+void afficherVote(Vote vote);
 
 // Créez une fonction pour ajouter un Vote dans le fichier .text.
-void ajouterVote(const struct Vote* vote);
+void ajouterVote(Vote vote);
 
 // Créez une fonction pour supprimer un Vote dans le fichier .text par son ID d'utilisateur.
 void supprimerVoteParUtilisateurId(unsigned int IdUtilisateur, unsigned int IdElection);

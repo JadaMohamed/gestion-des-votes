@@ -1,0 +1,1 @@
+static unsigned int NOMBRE_DES_ELECTIONS = 0; // Pour l'utiliser en auto-incrémentation des IDs

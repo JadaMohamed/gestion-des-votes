@@ -1,34 +1,25 @@
-#include "Date.h"
 #include "Chaine.h"
+#include "Date.h"
 
-static unsigned int NOMBRE_DES_ADMIN = 0;	// Pour l'utiliser en auto incrementation des IDs
-
-struct Administrateur 
+struct administrateur
 {
-	
-	unsigned int IdAdmin;
-	struct chaine Nom;
-	struct chaine Prenom;
-	struct chaine Email;
-	struct chaine Telphone;
-	struct chaine MotDePasse;
-  	
-} administrateur;
+    unsigned int IdAdmin;
+    Chaine Nom;
+    Chaine Prenom;
+    Chaine Email;
+    Chaine Telephone;
+    Chaine MotDePasse;
+};
+typedef struct administrateur Administrateur;
 
-// Créez une fonction pour chercher un Administrateur dans le fichier .text avec san email & password
-int chercherAdministrateur(struct chaine Email, struct chaine MotDePass); 
+int chercherAdministrateur(Chaine Email, Chaine MotDePasse);
 
-// Créez une fonction pour saisir des données dans une structure Administrateur à partir de l'utilisateur.
-void saisirAdministrateur(struct Administrateur* admin);
+void saisirAdministrateur(Administrateur *admin);
 
-// Créez une fonction pour afficher les détails d'une structure Administrateur.
-void afficherAdministrateur(struct Administrateur* admin);
+void afficherAdministrateur(Administrateur admin);
 
-// Créez une fonction pour ajouter un Administrateur dans le fichier .text.
-void ajouterAdministrateur(struct Administrateur* admin);
+void ajouterAdministrateur(Administrateur admin);
 
-// Créez une fonction pour supprimer un Administrateur dans le fichier .text.
 void supprimerAdministrateurParId(unsigned int IdAdmin); 
 
-// Créez une fonction pour supprimer un Administrateur dans le fichier .text.
-void supprimerAdministrateurParEmail(struct chaine Email);
+void supprimerAdministrateurParEmail(Chaine Email);

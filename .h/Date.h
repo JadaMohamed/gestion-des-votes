@@ -12,21 +12,23 @@ struct date
     unsigned int secondes;
     
 };
-
-#endif // DATE_H
-
+typedef struct date Date;
 
 // Créez une fonction pour saisir des données dans une structure EntiteDatee à partir de l'utilisateur.
-void saisirEntiteDatee(struct EntiteDatee* entite);
+void saisirDate(Date *entiee);
 
-// Créez une fonction pour afficher les détails d'une structure EntiteDatee.
-void afficherEntiteDatee(const struct EntiteDatee* entite);
+// Créez une fonction pour afficher les détails d'une structure Date.
+void afficherDate(Date entiee);
 
 // Créez une fonction pour ajouter une EntiteDatee dans le fichier .text.
-void ajouterEntiteDatee(const struct EntiteDatee* entite);
+void ajouterEntiteDatee(Date entite);
 
 // Compare two dates and return:
 //   -1 if date1 is earlier than date2
 //    0 if date1 is equal to date2
 //    1 if date1 is later than date2
-int comparerDates(const struct date* date1, const struct date* date2)
+int comparerDates(Date date1, Date date2);
+
+#endif // DATE_H
+
+
