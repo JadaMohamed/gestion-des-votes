@@ -173,8 +173,3 @@ void supprimerCategorieParNom(Chaine NomCategorie)
     remove("categories.txt");
     rename("temp.txt", "categories.txt");
 }
-
-
-
-
-

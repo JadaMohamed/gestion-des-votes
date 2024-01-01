@@ -19,3 +19,14 @@ Chaine saisirChaine()
 
     return chaine;
 }
+
+void setChaine(Chaine *chaine, char *s)
+{
+    if (chaine == NULL || s == NULL)
+    {
+        return;
+    }
+    chaine->text = malloc((strlen(s) + 1) * sizeof(char));
+    strcpy(chaine->text, s);
+    chaine->taille = strlen(s);
+}

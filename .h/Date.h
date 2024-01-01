@@ -6,7 +6,7 @@ struct date
  	
     unsigned int mois;
     unsigned int jour;
-    unsigned int annee;
+    unsigned int anne;
     unsigned int heure;
     unsigned int minute;
     unsigned int secondes;
@@ -15,10 +15,10 @@ struct date
 typedef struct date Date;
 
 // Créez une fonction pour saisir des données dans une structure EntiteDatee à partir de l'utilisateur.
-void saisirDate(Date *entite);
+void saisirDate(Date *entiee);
 
 // Créez une fonction pour afficher les détails d'une structure Date.
-void afficherDate(Date entite);
+void afficherDate(Date entiee);
 
 // Créez une fonction pour ajouter une EntiteDatee dans le fichier .text.
 void ajouterEntiteDatee(Date entite);

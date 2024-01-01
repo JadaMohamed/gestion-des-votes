@@ -10,7 +10,7 @@ void saisirDate(Date *entite)
 	scanf("%u", &entite -> jour);
 	
 	printf("Entrez l'année : ");
-	scanf("%u", &entite -> annee);
+	scanf("%u", &entite -> anne);
 	
 	printf("Entrez l'heure : ");
 	scanf("%u", &entite -> heure);
@@ -24,7 +24,7 @@ void saisirDate(Date *entite)
 
 void afficherDate(Date entite)
 {
-	printf("Date : %2u / %2u / %4u\t%2u : %2u : %2u\n", entite.mois,entite.jour,entite.annee,entite.heure,entite.minute,entite.secondes);
+	printf("Date : %2u / %2u / %4u\t%2u : %2u : %2u\n", entite.mois,entite.jour,entite.anne,entite.heure,entite.minute,entite.secondes);
 }
 
 void ajouterEntiteDatee(Date entite)
@@ -35,13 +35,13 @@ void ajouterEntiteDatee(Date entite)
 		perror("Erreur lors de l'ouverture du fichier");
 		return ;
 	}
-	fprintf(file ,"%2u / %2u / %4u\t%2u : %2u : %2u\n",entite.mois,entite.jour,entite.annee,entite.heure,entite.minute,entite.secondes);
+	fprintf(file ,"%2u / %2u / %4u\t%2u : %2u : %2u\n",entite.mois,entite.jour,entite.anne,entite.heure,entite.minute,entite.secondes);
 	fclose(file);
 }
 
 int comparerDates(Date date1, Date date2)
 {
-	if(date1.annee < date2.annee || (date1.annee == date2.annee && (date1.mois < date2.mois || 
+	if(date1.anne < date2.anne || (date1.anne == date2.anne && (date1.mois < date2.mois || 
 	(date1.mois == date2.mois && (date1.jour < date2.jour || 
 	date1.jour == date2.jour && (date1.heure < date2.heure ||
 	date1.heure == date2.heure && (date1.minute < date2.minute ||
@@ -49,7 +49,7 @@ int comparerDates(Date date1, Date date2)
 	{
 		return -1 ;
 	}
-	else if (date1.annee == date2.annee && date1.mois == date2.mois && date1.jour == date2.jour && date1.heure == date2.heure &&date1.minute == date2.minute && date1.secondes == date2.secondes)
+	else if (date1.anne == date2.anne && date1.mois == date2.mois && date1.jour == date2.jour && date1.heure == date2.heure &&date1.minute == date2.minute && date1.secondes == date2.secondes)
 		{
 			return 0 ;
 		}
@@ -58,9 +58,3 @@ int comparerDates(Date date1, Date date2)
 		return 1 ;
 	}	
 }
-
-
-
-
-
-
