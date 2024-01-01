@@ -6,19 +6,19 @@ void saisirDate(Date *entite)
 	printf("Entrez le mois (1 - 12) :\t");
 	scanf("%u", &entite -> mois);
 	
-	printf("Entrez le Jour :\t");
+	printf("Entrez le Jour : ");
 	scanf("%u", &entite -> jour);
 	
-	printf("Entrez l'année :\t");
+	printf("Entrez l'année : ");
 	scanf("%u", &entite -> annee);
 	
-	printf("Entrez l'heure :\t");
+	printf("Entrez l'heure : ");
 	scanf("%u", &entite -> heure);
 	
-	printf("Entrez les minutes :\t");
+	printf("Entrez les minutes : ");
 	scanf("%u", &entite -> minute);
 	
-	printf("Entrez les secondes :\t");
+	printf("Entrez les secondes : ");
 	scanf("%u", &entite -> secondes);
 }
 
@@ -41,7 +41,7 @@ void ajouterEntiteDatee(Date entite)
 
 int comparerDates(Date date1, Date date2)
 {
-	if(date1.annee < date2.annee || (date1.annee == date2.annee &&(date1.mois < date2.mois || 
+	if(date1.annee < date2.annee || (date1.annee == date2.annee && (date1.mois < date2.mois || 
 	(date1.mois == date2.mois && (date1.jour < date2.jour || 
 	date1.jour == date2.jour && (date1.heure < date2.heure ||
 	date1.heure == date2.heure && (date1.minute < date2.minute ||
@@ -49,10 +49,9 @@ int comparerDates(Date date1, Date date2)
 	{
 		return -1 ;
 	}
-	else if (date1.annee == date2.annee && date1.mois == date2.mois && date1.jour == date2.jour && date1.heure == date2.heure &&
-				date1.minute == date2.minute && date1.secondes == date2.secondes  )
+	else if (date1.annee == date2.annee && date1.mois == date2.mois && date1.jour == date2.jour && date1.heure == date2.heure &&date1.minute == date2.minute && date1.secondes == date2.secondes)
 		{
-			return 0 ; 
+			return 0 ;
 		}
 	else 
 	{

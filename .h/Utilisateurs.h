@@ -17,7 +17,7 @@ typedef struct utilisateur Utilisateur;
 int chercherUtilisateurParEmail(Chaine Email);
 
 // Créez une fonction pour saisir des données dans une structure Utilisateur à partir de l'utilisateur.
-void saisirUtilisateur(Utilisateur u);
+void saisirUtilisateur(Utilisateur *u);
 
 // Créez une fonction pour afficher les détails d'une structure Utilisateur.
 void afficherUtilisateur(Utilisateur u);
@@ -34,5 +34,5 @@ void supprimerUtilisateurParEmail(Chaine Email);
 // Créez une fonction pour afficher tout les utilisateurs
 void afficherUtilisateurs();
 
-// Créez une fonction pour verifier c'est un utilisateur a un role donne.
+// Créez une fonction pour verifier si un utilisateur a un role donné.
 void utilisateurAUnRole(unsigned int IdRole, unsigned int IdUtilisateur);
