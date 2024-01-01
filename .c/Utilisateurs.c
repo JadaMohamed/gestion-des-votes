@@ -201,9 +201,10 @@ int chercherUtilisateurParEmail(Chaine Email)
     return -1;
 }
 
-
-
-/*void utilisateurAUnRole(unsigned int IdRole, unsigned int IdUtilisateur);*/
+void utilisateurAUnRole(unsigned int IdRole, unsigned int IdUtilisateur)
+{
+	
+}
 
 
 
