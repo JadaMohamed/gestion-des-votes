@@ -12,7 +12,7 @@ typedef struct vote Vote;
 // Créez une fonction pour chercher un Vote dans le fichier .text par son ID d'utilisateur.
 void afficherVotesParUtilisateurId(unsigned int IdUtilisateur);
 
-// Créez une fonction pour chercher un Vote d'un utilisateur pour un election donne dans le fichier.
+// Créez une fonction pour chercher un Vote d'un utilisateur pour un election donné dans le fichier.
 void afficherVotesParUtilisateurIdDunElection(unsigned int IdUtilisateur, unsigned int IdElection);
 
 // Créez une fonction pour saisir des données dans une structure Vote à partir de l'utilisateur.

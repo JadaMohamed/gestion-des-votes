@@ -1,6 +1,10 @@
 #include <stdio.h>
 #include "..\.h\Utilisateurs.h"
 #include "..\.h\Date.h"
+#include<stdlib.h>
+#include <string.h>
+
+#define MAX_CHAR 200
 
 static unsigned int NOMBRE_DES_UTILISATEURS = 0; // Pour l'utiliser en auto-incrémentation des IDs
 
@@ -100,62 +104,61 @@ void supprimerUtilisateurParId(unsigned int IdUtilisateur)
     }
 }
 
-void supprimerUtilisateurParEmail(Chaine Email) 
+void supprimerUtilisateurParEmail(Chaine Email)
 {
-    FILE *file = fopen("utilisateurs.txt", "r");
-    if (file == NULL) 
-	{
+    FILE *fichierEntree, *fichierSortie;
+
+    fichierEntree = fopen("utilisateurs.txt", "r");
+    fichierSortie = fopen("temp.txt", "w");
+
+    if (fichierEntree == NULL || fichierSortie == NULL)
+    {
         perror("Erreur lors de l'ouverture du fichier !\n");
-        return;
+        exit(EXIT_FAILURE);
     }
 
-    FILE *new_utilisateursFile = fopen("new_utilisateurs.txt", "w");
-    if (new_utilisateursFile == NULL)
-	{
-        perror("Erreur lors de l'ouverture du fichier temporaire !\n");
-        fclose(file);
-        return;
-    }
+    char ligne[MAX_CHAR];
+    Utilisateur utilisateur;
 
-    Utilisateur u;
-    int found = 0;
+    while (fgets(ligne, MAX_CHAR, fichierEntree) != NULL)
+    {
+        sscanf(ligne, "%u#%[^#]#%[^#]#%[^#]#%[^#]#%[^#]#%[^#]",
+            &utilisateur.IdUtilisateur, utilisateur.Nom,
+            utilisateur.Prenom, utilisateur.Email,
+            utilisateur.Telephone, utilisateur.DateInscription,
+            utilisateur.DateNaissance);
 
-    while (fread(&u, sizeof(Utilisateur), 1, file)) 
-	{
-        if (strncmp(u.Email, Email, sizeof(u.Email)) != 0)
-		{
-            fwrite(&u, sizeof(Utilisateur), 1, new_utilisateursFile);
-        } 
-		else 
-		{
-            found = 1;
+        if (strcmp(utilisateur.Email.text, Email.text) != 0)
+        {
+            fprintf(fichierSortie, "%u#%s#%s#%s#%s#%s#%s\n",
+                utilisateur.IdUtilisateur, utilisateur.Nom,
+                utilisateur.Prenom, utilisateur.Email,
+                utilisateur.Telephone, utilisateur.DateInscription,
+                utilisateur.DateNaissance);
         }
     }
 
-    fclose(file);
-    fclose(new_utilisateursFile);
+    fclose(fichierEntree);
+    fclose(fichierSortie);
 
     remove("utilisateurs.txt");
-    rename("new_utilisateurs.txt", "utilisateurs.txt");
-
-    if (!found) {
-        printf("Utilisateur avec l'email %s non trouvé.\n", Email);
-    } else {
-        printf("Utilisateur avec l'email %s supprimé avec succès.\n", Email);
-    }
+    rename("temp.txt", "utilisateurs.txt");
 }
+
 
 void afficherUtilisateurs() 
 {
     FILE *file = fopen("utilisateurs.txt", "r");
-    if (file == NULL) {
+    if (file == NULL) 
+	{
         perror("Erreur lors de l'ouverture du fichier !\n");
         return ;
     }
 
     Utilisateur u;
 
-    while (fread(&u, sizeof(Utilisateur), 1, file)) {
+    while (fread(&u, sizeof(Utilisateur), 1, file)) 
+	{
         afficherUtilisateur(u);
         printf("----------------------\n");
     }
@@ -163,8 +166,44 @@ void afficherUtilisateurs()
     fclose(file);
 }
 
-/*int chercherUtilisateurParEmail(Chaine Email);
-void utilisateurAUnRole(unsigned int IdRole, unsigned int IdUtilisateur);*/
+
+int chercherUtilisateurParEmail(Chaine Email)
+{
+	FILE *fichierEntree;
+    fichierEntree = fopen("utilisateurs.txt", "r");
+
+    if (fichierEntree == NULL)
+    {
+        perror("Erreur lors de l'ouverture du fichier");
+        exit(EXIT_FAILURE);
+    }
+
+    char ligne[MAX_CHAR];
+    Utilisateur utilisateur;
+
+    while (fgets(ligne, MAX_CHAR, fichierEntree) != NULL)
+    {
+        sscanf(ligne, "%u#%[^#]#%[^#]#%[^#]#%[^#]#%[^#]#%[^#]",
+            &utilisateur.IdUtilisateur, utilisateur.Nom,
+            utilisateur.Prenom, utilisateur.Email,
+            utilisateur.Telephone, utilisateur.DateInscription,
+            utilisateur.DateNaissance);
+            
+        if (strcmp(utilisateur.Email.text, Email.text) == 0)
+        {
+            fclose(fichierEntree);
+            return utilisateur.IdUtilisateur;
+        }
+    }
+
+    fclose(fichierEntree);
+
+    return -1;
+}
+
+
+
+/*void utilisateurAUnRole(unsigned int IdRole, unsigned int IdUtilisateur);*/
 
 
 
