@@ -1,3 +1,4 @@
+<<<<<<< HEAD
 #include <stdio.h>
 #include <stdlib.h>
 #include "..\.h\RolesAutorises.h"
@@ -114,4 +115,13 @@ void afficherRoleAutoriseElection(unsigned int IdElection)
     }
 
     fclose(file);
+=======
+static unsigned int NOMBRE_DES_ROLES_AUTORISES = 0; // Pour l'utiliser en auto-incrémentation des IDs
+
+
+
+void utilisateurAUnRole(unsigned int IdRole, unsigned int IdUtilisateur)
+{
+	
+>>>>>>> ab249feb064da8b780bee43b75721d815d641e34
 }

@@ -9,12 +9,19 @@ void affecterUnRoleAUntilisateur(unsigned int IdRole, unsigned int IdUtilisateur
 	if(!estRoleValide(IdRole))
 	{
 		printf("\nRole avec ID %u est introuvable.", IdRole);
+<<<<<<< HEAD
 		return;
 	}
 	if(!estUtilisateurValide(IdUtilisateur))
 	{
 		printf("\nUtilisateur avec ID %u est introuvable.", IdUtilisateur);
 		return;
+=======
+	}
+	if(!estUtilisateurValide(IdRole))
+	{
+		printf("\nUtilisateur avec ID %u est introuvable.", IdUtilisateur);
+>>>>>>> ab249feb064da8b780bee43b75721d815d641e34
 	}
 	ajouterRolesDesUtilisateur(IdRole, IdUtilisateur);
 }
@@ -36,6 +43,7 @@ void ajouterRolesDesUtilisateur(unsigned int IdRole, unsigned int IdUtilisateur)
 
     printf("\nLe role avec l'ID %u a ete ajoute a l'utilisateur avec l'ID %u avec succes.\n", IdRole, IdUtilisateur);
 }
+<<<<<<< HEAD
 
 void supprimerRolesDesUtilisateur(unsigned int IdRole, unsigned int IdUtilisateur)
 {
@@ -125,3 +133,5 @@ void afficherRolesDUnUtilisateur(unsigned int IdUtilisateur)
 
     fclose(file);
 }
+=======
+>>>>>>> ab249feb064da8b780bee43b75721d815d641e34

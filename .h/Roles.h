@@ -19,6 +19,10 @@ void ajouterRole(Roles role);
 // Créez une fonction pour supprimer un Role dans le fichier .text par son ID.
 void supprimerRoleParId(unsigned int IdRole);
 
+<<<<<<< HEAD
 int estRoleValide(unsigned int IdRole);
 
 void afficherRoleParId(unsigned int IdRole);
+=======
+int estRoleValide(unsigned int IdRole);
+>>>>>>> ab249feb064da8b780bee43b75721d815d641e34

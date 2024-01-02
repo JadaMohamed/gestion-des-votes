@@ -16,8 +16,11 @@ typedef struct utilisateur Utilisateur;
 
 void ecrireNombreDesUser(unsigned int nombreDesUser);	void incrementerNombreDesUser();	unsigned int lireNombreDesUser();
 
+<<<<<<< HEAD
 Utilisateur getConnectedUser();
 
+=======
+>>>>>>> ab249feb064da8b780bee43b75721d815d641e34
 // Créez une fonction pour chercher un Utilisateur dans le fichier .text par son email.
 int chercherUtilisateurParEmail(Chaine Email);
 

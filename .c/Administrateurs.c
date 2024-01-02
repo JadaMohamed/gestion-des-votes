@@ -12,11 +12,14 @@ Administrateur *T_ADMINISTRATEURS;
 
 unsigned int NOMBRE_DES_ADMIN;
 
+<<<<<<< HEAD
 Administrateur getConnectedAdministrateur()
 {
 	return (*ADMINISTRATEUR_CONNECTE);
 }
 
+=======
+>>>>>>> ab249feb064da8b780bee43b75721d815d641e34
 void AfficherConnectedAdministrateur()
 {
 	afficherAdministrateur(*ADMINISTRATEUR_CONNECTE);
@@ -24,7 +27,11 @@ void AfficherConnectedAdministrateur()
 
 unsigned int lireNombreDesAdmin()
 {
+<<<<<<< HEAD
     FILE *file = fopen("donnees\\autoIncrement\\autoincrementAdminIDs.txt", "r");
+=======
+    FILE *file = fopen("donnees\\autoincrementAdminIDs.txt", "r");
+>>>>>>> ab249feb064da8b780bee43b75721d815d641e34
     if (file == NULL)
     {
         perror("Error opening file");
@@ -46,7 +53,11 @@ void incrementerNombreDesAdmin()
 
 void ecrireNombreDesAdmin(unsigned int nombreDesAdmin)
 {
+<<<<<<< HEAD
     FILE *file = fopen("donnees\\autoIncrement\\autoincrementAdminIDs.txt", "w");
+=======
+    FILE *file = fopen("donnees\\autoincrementAdminIDs.txt", "w");
+>>>>>>> ab249feb064da8b780bee43b75721d815d641e34
     if (file == NULL)
     {
         perror("Error opening file");
@@ -89,7 +100,11 @@ void ajouterAdministrateur()
     saisirAdministrateur(&admin);
 
     // Add the new administrator to the file
+<<<<<<< HEAD
     FILE *file = fopen("donnees\\administrateurs.txt", "a"); // Open the file in append mode
+=======
+     FILE *file = fopen("donnees\\administrateurs.txt", "a"); // Open the file in append mode
+>>>>>>> ab249feb064da8b780bee43b75721d815d641e34
     if (file == NULL)
     {
         perror("Error opening file");

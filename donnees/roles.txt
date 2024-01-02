@@ -1,3 +1,9 @@
+<<<<<<< HEAD
 #0#Employee
 #2#Chef de service
 #3#Directeur
+=======
+#1#A
+#2#Z
+#3#E
+>>>>>>> ab249feb064da8b780bee43b75721d815d641e34
