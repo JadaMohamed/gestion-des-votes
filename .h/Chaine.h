@@ -4,10 +4,11 @@
 struct chaine
 {
     char *text;
-    unsigned int taille;
+    unsigned int taille ;
 };
 typedef struct chaine Chaine;
 
 Chaine saisirChaine();
+void setChaine(Chaine *chaine, char *s);
 
 #endif // CHAINE_H

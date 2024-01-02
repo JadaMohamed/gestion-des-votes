@@ -14,7 +14,7 @@ typedef struct resultat Resultat;
 int chercherResultatParElectionId(unsigned int IdElection);
 
 // Créez une fonction pour ajouter un Resultat dans le fichier .text.
-void ajouterResultat(Resultat resultat, unsigned int IdElection);
+void ajouterResultat(Resultat resultat);
 
 // Créez une fonction pour supprimer un Resultat dans le fichier .text par son ID d'élection.
 void supprimerResultatParElectionId(unsigned int IdElection);

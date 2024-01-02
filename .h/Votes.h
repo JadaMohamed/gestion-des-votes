@@ -16,7 +16,7 @@ void afficherVotesParUtilisateurId(unsigned int IdUtilisateur);
 void afficherVotesParUtilisateurIdDunElection(unsigned int IdUtilisateur, unsigned int IdElection);
 
 // Créez une fonction pour saisir des données dans une structure Vote à partir de l'utilisateur.
-void saisirVote(Vote vote);
+void saisirVote(Vote *vote);
 
 // Créez une fonction pour afficher les détails d'une structure Vote.
 void afficherVote(Vote vote);

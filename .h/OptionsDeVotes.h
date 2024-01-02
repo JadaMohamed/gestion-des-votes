@@ -12,7 +12,7 @@ struct optionDeVote
 typedef struct optionDeVote OptionDeVote;
 
 // Créez une fonction pour saisir des données dans une structure OptionDeVote à partir de l'utilisateur.
-void saisirOptionDeVote(OptionDeVote *option);
+void saisirOptionDeVote(OptionDeVote *option, unsigned int IdElection);
 
 // Créez une fonction pour afficher les détails d'une structure OptionDeVote.
 void afficherOptionDeVote(OptionDeVote option);

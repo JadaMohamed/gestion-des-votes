@@ -3,7 +3,6 @@
 struct roles
 {
     unsigned int IdRole;
-    unsigned int IdUtilisateur;
     Chaine NomRole;
 };
 typedef struct roles Roles; 
@@ -19,3 +18,7 @@ void ajouterRole(Roles role);
 
 // Créez une fonction pour supprimer un Role dans le fichier .text par son ID.
 void supprimerRoleParId(unsigned int IdRole);
+
+int estRoleValide(unsigned int IdRole);
+
+void afficherRoleParId(unsigned int IdRole);

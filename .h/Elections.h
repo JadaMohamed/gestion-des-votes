@@ -14,6 +14,8 @@ struct election
 };
 typedef struct election Election;
 
+void DeclarerUneElection();
+
 // Créez une fonction pour chercher une Election dans le fichier .text avec son Id.
 int chercherElectionId(unsigned int IdElection);
 
