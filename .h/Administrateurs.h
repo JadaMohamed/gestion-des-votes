@@ -12,11 +12,7 @@ struct administrateur
 };
 typedef struct administrateur Administrateur;
 
-<<<<<<< HEAD
 Administrateur getConnectedAdministrateur();
-
-=======
->>>>>>> ab249feb064da8b780bee43b75721d815d641e34
 //Pour gerer l'auto-incrementation des Ids des Admins.
 unsigned int lireNombreDesAdmin();	void ecrireNombreDesAdmin(unsigned int nombreDesAdmin);	void ecrireNombreDesAdmin(unsigned int nombreDesAdmin);
 

@@ -1,34 +1,11 @@
 #include <stdio.h>
 #include "..\.h\Date.h"
-<<<<<<< HEAD
 #include <time.h>
 
 void saisirDate(Date *entite)
 {
 	printf("Entrez la date (12/31/2000 21:21:21) :\t");
 	scanf("%u/%u/%u %u:%u:%u", &entite -> mois, &entite -> jour, &entite -> anne, &entite -> heure, &entite -> minute, &entite -> secondes);
-=======
-
-void saisirDate(Date *entite)
-{
-	printf("Entrez le mois (1 - 12) :\t");
-	scanf("%u", &entite -> mois);
-	
-	printf("Entrez le Jour : ");
-	scanf("%u", &entite -> jour);
-	
-	printf("Entrez l'année : ");
-	scanf("%u", &entite -> anne);
-	
-	printf("Entrez l'heure : ");
-	scanf("%u", &entite -> heure);
-	
-	printf("Entrez les minutes : ");
-	scanf("%u", &entite -> minute);
-	
-	printf("Entrez les secondes : ");
-	scanf("%u", &entite -> secondes);
->>>>>>> ab249feb064da8b780bee43b75721d815d641e34
 }
 
 void afficherDate(Date entite)
@@ -67,7 +44,6 @@ int comparerDates(Date date1, Date date2)
 		return 1 ;
 	}	
 }
-<<<<<<< HEAD
 
 void getCurrentDate(Date *date)
 {
@@ -81,5 +57,3 @@ void getCurrentDate(Date *date)
     date->mois = current_time->tm_mon + 1; // Months are 0-indexed in tm
     date->anne = current_time->tm_year + 1900; // Years are years since 1900 in tm
 }
-=======
->>>>>>> ab249feb064da8b780bee43b75721d815d641e34

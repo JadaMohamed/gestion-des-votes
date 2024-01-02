@@ -13,23 +13,16 @@ void AfficherConnectedUser()
 	afficherUtilisateur(*UTILISATEUR_CONNECTE);
 }
 
-<<<<<<< HEAD
 Utilisateur getConnectedUser()
 {
 	return (*UTILISATEUR_CONNECTE);
 }
 
-=======
->>>>>>> ab249feb064da8b780bee43b75721d815d641e34
 static unsigned int NOMBRE_DES_UTILISATEURS = 0; // Pour l'utiliser en auto-incrémentation des IDs
 
 unsigned int lireNombreDesUser()
 {
-<<<<<<< HEAD
     FILE *file = fopen("donnees\\autoIncrement\\autoincrementUserIDs.txt", "r");
-=======
-    FILE *file = fopen("donnees\\autoincrementUserIDs.txt", "r");
->>>>>>> ab249feb064da8b780bee43b75721d815d641e34
     if (file == NULL)
     {
         perror("Error opening file");

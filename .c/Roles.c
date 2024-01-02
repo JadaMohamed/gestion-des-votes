@@ -5,11 +5,7 @@ static unsigned int NOMBRE_DES_ROLES = 0; // Pour l'utiliser en auto-incrémenta
 
 unsigned int lireNombreDesRoles()
 {
-<<<<<<< HEAD
     FILE *file = fopen("donnees\\autoIncrement\\autoincrementRolesIDs.txt", "r");
-=======
-    FILE *file = fopen("donnees\\autoincrementRolesIDs.txt", "r");
->>>>>>> ab249feb064da8b780bee43b75721d815d641e34
     if (file == NULL)
     {
         perror("Error opening file");
@@ -31,11 +27,7 @@ void incrementerNombreDesRoles()
 
 void ecrireNombreDesRoles(unsigned int nombreDesRoles)
 {
-<<<<<<< HEAD
     FILE *file = fopen("donnees\\autoIncrement\\autoincrementRolesIDs.txt", "w");
-=======
-    FILE *file = fopen("donnees\\autoincrementRolesIDs.txt", "w");
->>>>>>> ab249feb064da8b780bee43b75721d815d641e34
     if (file == NULL)
     {
         perror("Error opening file");
@@ -202,7 +194,6 @@ int estRoleValide(unsigned int IdRole)
     // Role with the specified ID was not found
     return 0; // Assuming 0 means false or invalid role
 }
-<<<<<<< HEAD
 
 void afficherRoleParId(unsigned int IdRole)
 {
@@ -243,5 +234,3 @@ void afficherRoleParId(unsigned int IdRole)
     // Role with the specified ID was not found
     printf("Role avec l'ID %u introuvable.\n", IdRole);
 }
-=======
->>>>>>> ab249feb064da8b780bee43b75721d815d641e34

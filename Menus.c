@@ -1,9 +1,6 @@
 #include <stdio.h>
 #include <stdlib.h>
-<<<<<<< HEAD
 #include "Menus.h"
-=======
->>>>>>> ab249feb064da8b780bee43b75721d815d641e34
 #include ".h\Administrateurs.h"
 #include ".h\Categories.h"
 #include ".h\Elections.h"
@@ -107,7 +104,6 @@ void menuElections()
 	{
 		system("cls");
 		printf("\nMENU GERER ELECTIONS");
-<<<<<<< HEAD
 		printf("\n1 - Afficher tout les elections."); //done
 		printf("\n2 - Ajouter une election (avec ces options de votes et les roles qui ont le droit a voter)."); //done
 		printf("\n3 - Afficher les resultat d'un election par id.");
@@ -117,29 +113,15 @@ void menuElections()
 		printf("\n7 - Afficher tout les categories des elections."); //done
 		printf("\n8 - Afficher les details d'une election (ces options de votes et les roles qui ont le droit a voter)."); //done
 		printf("\n9 - Retour au menu principal.\n");
-=======
-		printf("\n1 - Afficher les elections.");
-		printf("\n2 - Afficher les resultat d'un election par id.");
-		printf("\n3 - Supprimer un election par id.");
-		printf("\n4 - Afficher touts les elections d'une periode donnee.");
-		printf("\n4 - Afficher touts les elections d'une categorie donnee.");
-		printf("\n5 - Ajouter role autorise.");
-		printf("\n6 - Retour au menu principal.\n");
->>>>>>> ab249feb064da8b780bee43b75721d815d641e34
 		printf("\nOption : ");
 		scanf("%d", &op);
 		getchar();
 	}
-<<<<<<< HEAD
 	while(op < 1 || op > 8);
-=======
-	while(op < 1 || op > 6);
->>>>>>> ab249feb064da8b780bee43b75721d815d641e34
 	
 	switch(op)
 	{
 		case 1:
-<<<<<<< HEAD
 		{
 			afficherElections();
 			printf("\nOK (Enter)  ");
@@ -219,25 +201,6 @@ void menuElections()
 			menuAdministrateurPrincipal();
 			break;
 		}
-=======
-			menuElections();
-			break;
-		case 2:
-			menuElections();
-			break;
-		case 3:
-			menuElections();
-			break;
-		case 4:
-			menuElections();
-			break;
-		case 5:
-			menuElections();
-			break;
-		case 6:
-			menuAdministrateurPrincipal();
-			break;
->>>>>>> ab249feb064da8b780bee43b75721d815d641e34
 	}
 }
 
@@ -258,22 +221,14 @@ void menuUtilisateurs()
 		printf("\n8  - Ajouter un role."); //done
 		printf("\n9  - Afficher tout les roles."); //done
 		printf("\n10 - Suprimer un role par id."); //done
-<<<<<<< HEAD
 		printf("\n11 - Suprimer un role a un utilisateur."); //done
 		printf("\n12 - Afficher tout les roles d'un utilisateur."); //done
 		printf("\n13 - Retour au menu principal.\n");
-=======
-		printf("\n11 - Retour au menu principal.\n");
->>>>>>> ab249feb064da8b780bee43b75721d815d641e34
 		printf("\nOption : ");
 		scanf("%d", &op);
 		getchar();
 	}
-<<<<<<< HEAD
 	while(op < 1 || op > 13);
-=======
-	while(op < 1 || op > 11);
->>>>>>> ab249feb064da8b780bee43b75721d815d641e34
 	
 	switch(op)
 	{
@@ -377,7 +332,6 @@ void menuUtilisateurs()
 			break;
 		}
 		case 11:
-<<<<<<< HEAD
 		{
 			printf("Afficher les roles d'un utilisateur :\n------------------------\nIdRole : ");
 			unsigned int IdRole, IdUtilisateur;
@@ -405,8 +359,6 @@ void menuUtilisateurs()
 			break;
 		}
 		case 13:
-=======
->>>>>>> ab249feb064da8b780bee43b75721d815d641e34
 			menuAdministrateurPrincipal();
 			break;
 	}
@@ -490,32 +442,20 @@ void menuUtilisateurPrincipal()
 	{
 		system("cls");
 		printf("\nMENU PRINCIPAL");
-<<<<<<< HEAD
 		printf("\n1 - Changer mot de passe.");
 		printf("\n2 - Voter un Elections.");
 		printf("\n3 - Afficher mes votes.");
 		printf("\n4 - Afficher mes roles.");
 		printf("\n5 - Se deconnecter.\n");
-=======
-		printf("\n1 - Parametres.");
-		printf("\n2 - Voter un Elections.");
-		printf("\n3 - Afficher mes votes.");
-		printf("\n4 - Se deconnecter.\n");
->>>>>>> ab249feb064da8b780bee43b75721d815d641e34
 		printf("\nOption : ");
 		scanf("%d", &op);
 		getchar();
 	}
-<<<<<<< HEAD
 	while(op < 1 || op > 5);
-=======
-	while(op < 1 || op > 4);
->>>>>>> ab249feb064da8b780bee43b75721d815d641e34
 	
 	switch(op)
 	{
 		case 1:
-<<<<<<< HEAD
 		{
 			menuUtilisateurPrincipal();
 			break;
@@ -528,18 +468,10 @@ void menuUtilisateurPrincipal()
 			system("pause");
 			break;
 		}
-=======
-			menuUtilisateurPrincipal();
-			break;
-		case 2:
-			menuUtilisateurPrincipal();
-			break;
->>>>>>> ab249feb064da8b780bee43b75721d815d641e34
 		case 3:
 			menuUtilisateurPrincipal();
 			break;
 		case 4:
-<<<<<<< HEAD
 			printf("\nAfficher mes roles : \-------------------\n");
 			Utilisateur u;
 			u = getConnectedUser();
@@ -549,8 +481,6 @@ void menuUtilisateurPrincipal()
 			menuUtilisateurPrincipal();
 			break;
 		case 5:
-=======
->>>>>>> ab249feb064da8b780bee43b75721d815d641e34
 			seDeConnecterUtilisateur();
 			break;
 	}

@@ -1,7 +1,6 @@
 #include <stdlib.h>
 #include <stdio.h>
 #include "..\.h\Chaine.h"
-#include <string.h>
 
 Chaine saisirChaine()
 {
