@@ -12,3 +12,4 @@ Chaine saisirChaine();
 void setChaine(Chaine *chaine, char *s);
 
 #endif // CHAINE_H
+

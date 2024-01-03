@@ -9,9 +9,10 @@ void seDeConnecterAdministrateur();
 void menuAdministrateurPrincipal();	
 void menuAdministrateurs();	
 void menuElections();	
-void menuElections();
+void menuUtilisateurs();
 
 //Les interfaces back-office de l'utilisateur.
 void menuUtilisateurPrincipal(); 
+
 void seConnecterUtilisateur();
 void seDeConnecterUtilisateur();

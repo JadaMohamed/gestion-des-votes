@@ -47,13 +47,13 @@ int comparerDates(Date date1, Date date2)
 
 void getCurrentDate(Date *date)
 {
-    time_t t;
-    struct tm *current_time;
+	time_t t = time(NULL);
+  	struct tm tm = *localtime(&t);
 
-    time(&t);
-    current_time = localtime(&t);
-
-    date->jour = current_time->tm_mday;
-    date->mois = current_time->tm_mon + 1; // Months are 0-indexed in tm
-    date->anne = current_time->tm_year + 1900; // Years are years since 1900 in tm
+    date->jour = tm.tm_mday;
+    date->mois = tm.tm_mon + 1; // Months are 0-indexed in tm
+    date->anne = tm.tm_year + 1900; // Years are years since 1900 in tm
+    date->heure = tm.tm_hour;
+    date->minute = tm.tm_min;
+    date->secondes = tm.tm_sec;
 }

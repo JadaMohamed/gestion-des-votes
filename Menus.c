@@ -10,6 +10,7 @@
 #include ".h\RolesAutorises.h"
 #include ".h\Utilisateurs.h"
 #include ".h\Votes.h"
+#include <time.h>
 #include ".h\RolesDesUtilisateurs.h"
 
 int isUserHasOneRoleFromAutoriziedForElection(int idUser, int IdElection) {

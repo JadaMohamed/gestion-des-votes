@@ -44,7 +44,7 @@ void incrementerNombreDesUser()
 
 void ecrireNombreDesUser(unsigned int nombreDesUser)
 {
-    FILE *file = fopen("donnees\\autoincrementUserIDs.txt", "w");
+    FILE *file = fopen("donnees\\autoIncrement\\autoincrementUserIDs.txt", "w");
     if (file == NULL)
     {
         perror("Error opening file");
