@@ -76,7 +76,7 @@ void DeclarerUneElection()
         OptionDeVote option;
         saisirOptionDeVote(&option, e.IdElection);
         ajouterOptionDeVote(option);
-        printf("Ajouter un autre Option ? (y/n) : ");
+        printf("\nAjouter un autre Option ? (y/n) : ");
         scanf(" %c", &op); // Note the space before %c to skip leading whitespace
         getchar(); // Consume the newline character
     } while (op == 'y');
@@ -237,7 +237,18 @@ void ajouterElection(Election election)
             election.IdAdmin);
 
     fclose(file);
-
+    
+//    Resultat resultat;
+//    
+//    unsigned int nbr = lireNombreDesResultats();
+//    resultat.IdResultat = nbr;
+//    incrementerNombreDesResultats(nbr+1);
+//    
+//    getCurrentDate(&(resultat.DateResultat));
+//    resultat.TotalVotes = 0;
+//    
+//    void ajouterResultat(resultat);
+    
     printf("\nL'Election a ete ajoutee avec succes.\n");
 }
 
@@ -373,6 +384,8 @@ void afficherElectionParId(unsigned int IdElection)
 
     fclose(file);
 }
+
+
 
 void afficherLesDetailesDUneElectionParId(unsigned int IdElection)
 {

@@ -1,5 +1,6 @@
 #include <stdio.h>
 #include <stdlib.h>
+#include <string.h>
 #include "Menus.h"
 #include ".h\Administrateurs.h"
 #include ".h\Categories.h"
@@ -15,6 +16,7 @@
 
 void seConnecter()
 {
+	updateProportions(2);
 	int op;
 	do
 	{
@@ -104,20 +106,21 @@ void menuElections()
 	{
 		system("cls");
 		printf("\nMENU GERER ELECTIONS");
-		printf("\n1 - Afficher tout les elections."); //done
-		printf("\n2 - Ajouter une election (avec ces options de votes et les roles qui ont le droit a voter)."); //done
-		printf("\n3 - Afficher les resultat d'un election par id.");
-		printf("\n4 - Afficher les elections d'une categorie (a partir de categorie id)."); //done
-		printf("\n5 - Supprimer une election (a partir de election id)."); //done
-		printf("\n6 - Ajouter une Categorie d'elections."); //done
-		printf("\n7 - Afficher tout les categories des elections."); //done
-		printf("\n8 - Afficher les details d'une election (ces options de votes et les roles qui ont le droit a voter)."); //done
-		printf("\n9 - Retour au menu principal.\n");
+		printf("\n1  - Afficher tout les elections."); //done
+		printf("\n2  - Ajouter une election (avec ces options de votes et les roles qui ont le droit a voter)."); //done
+		printf("\n3  - Afficher les resultat d'un election par id.");
+		printf("\n4  - Afficher les elections d'une categorie (a partir de categorie id)."); //done
+		printf("\n5  - Supprimer une election (a partir de election id)."); //done
+		printf("\n6  - Ajouter une Categorie d'elections."); //done
+		printf("\n7  - Afficher tout les categories des elections."); //done
+		printf("\n8  - Afficher les details d'une election (ces options de votes et les roles qui ont le droit a voter)."); //done
+		printf("\n9  - Nombre des vote d'une election (par election id).");
+		printf("\n10 - Retour au menu principal.\n");
 		printf("\nOption : ");
 		scanf("%d", &op);
 		getchar();
 	}
-	while(op < 1 || op > 8);
+	while(op < 1 || op > 10);
 	
 	switch(op)
 	{
@@ -197,6 +200,16 @@ void menuElections()
 			break;
 		}
 		case 9:
+		{
+			printf("\nNombre de vote d'une election :\n---------------------------\nId election : ");
+			unsigned int id;
+			scanf("%u", &id);
+			printf("\nNombre de vote : %d", getNombreDeVoteDUneElection(id));
+			printf("\nOK (Enter)  ");
+			system("pause");
+			menuElections();
+		}
+		case 10:
 		{
 			menuAdministrateurPrincipal();
 			break;
@@ -333,7 +346,7 @@ void menuUtilisateurs()
 		}
 		case 11:
 		{
-			printf("Afficher les roles d'un utilisateur :\n------------------------\nIdRole : ");
+			printf("Supprimer les roles d'un utilisateur :\n------------------------\nIdRole : ");
 			unsigned int IdRole, IdUtilisateur;
 			scanf("%u", &IdRole);
 			getchar();
@@ -457,6 +470,23 @@ void menuUtilisateurPrincipal()
 	{
 		case 1:
 		{
+			printf("\nChanger le mot de passe : \-------------------\nOld password : ");
+			Utilisateur u;
+			u = getConnectedUser();
+			Chaine oldPassword;
+			oldPassword = saisirChaine();
+			if(!strcmp(oldPassword.text, u.MotDepasse.text))
+			{
+				char newPassword [50];
+				printf("New password : ");
+				scanf("%s", &newPassword);
+				getchar();
+				changerMotDePasse(u.Email, newPassword);
+			}
+			else
+			printf("\n Wrong password!");
+			printf("\nOK (Enter)  ");
+			system("pause");
 			menuUtilisateurPrincipal();
 			break;
 		}
@@ -466,11 +496,19 @@ void menuUtilisateurPrincipal()
 			voter();
 			printf("\nOK (Enter)  ");
 			system("pause");
+			menuUtilisateurPrincipal();
 			break;
 		}
 		case 3:
+		{
+			Utilisateur u;
+			u = getConnectedUser();
+			afficherVoteDUnUtilisateur(u.IdUtilisateur);
+			printf("\nOK (Enter)  ");
+			system("pause");
 			menuUtilisateurPrincipal();
 			break;
+		}
 		case 4:
 			printf("\nAfficher mes roles : \-------------------\n");
 			Utilisateur u;

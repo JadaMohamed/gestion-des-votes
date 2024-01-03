@@ -438,3 +438,58 @@ int estUtilisateurValide(unsigned int IdUtilisateur)
     // User with the specified ID was not found
     return 0; // Assuming 0 means false or invalid user
 }
+
+void changerMotDePasse(Chaine Email, char *nouveauMotDePasse)
+{
+    FILE *file = fopen("donnees\\utilisateurs.txt", "r");
+    FILE *tempFile = fopen("donnees\\temp_utilisateurs.txt", "w");
+
+    if (file == NULL || tempFile == NULL)
+    {
+        perror("Error opening files");
+        return; // Error opening the files
+    }
+
+    char buffer[256]; // Adjust the size as needed
+
+    while (fgets(buffer, sizeof(buffer), file) != NULL)
+    {
+        int id;
+        char nom[50], prenom[50], userEmail[50], telephone[50], motDePasse[50];
+
+        // Parse the line into fields using sscanf
+        if (sscanf(buffer, "#%d#%49[^#]#%49[^#]#%49[^#]#%49[^#]#%49[^\n]",
+                   &id, nom, prenom, userEmail, telephone, motDePasse) == 6)
+        {
+            if (strcmp(userEmail, Email.text) == 0)
+            {
+                // Update the password
+
+                fprintf(tempFile, "#%d#%s#%s#%s#%s#%s\n", id, nom, prenom, userEmail, telephone, nouveauMotDePasse);
+            }
+            else
+            {
+                fprintf(tempFile, "%s", buffer);
+            }
+        }
+    }
+
+    fclose(file);
+    fclose(tempFile);
+
+    // Remove the original file
+    if (remove("donnees\\utilisateurs.txt") != 0)
+    {
+        perror("Error removing original file");
+        return; // Error removing the original file
+    }
+
+    // Rename the temporary file to replace the original file
+    if (rename("donnees\\temp_utilisateurs.txt", "donnees\\utilisateurs.txt") != 0)
+    {
+        perror("Error renaming file");
+        return; // Error renaming the file
+    }
+
+    printf("\nMot de passe change avec succes pour l'utilisateur avec l'email %s.\n", Email.text);
+}

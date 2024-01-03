@@ -4,128 +4,168 @@
 #include "..\.h\Resultats.h"
 
 static unsigned int NOMBRE_DES_RESULTATS = 0; // Pour l'utiliser en auto-incrÃ©mentation des IDs
-static unsigned int C_IdR = 0; // Pour l'auto-incrÃ©mentation de l'IdResultat
-Resultat *R = NULL;
-// CrÃ©ez une fonction pour chercher un Resultat dans le fichier .text par son ID d'Ã©lection.
+
+unsigned int lireNombreDesResultats()
+{
+    FILE *file = fopen("donnees\\autoIncrement\\autoincrementResultasIDs.txt", "r");
+    if (file == NULL)
+    {
+        perror("Error opening file");
+        return 0; // Default value if the file doesn't exist
+    }
+
+    unsigned int nombreDesResultats;
+    fscanf(file, "%u", &nombreDesResultats);
+
+    fclose(file);
+    return nombreDesResultats;
+}
+
+void incrementerNombreDesResultats(unsigned int nbr)
+{
+    NOMBRE_DES_RESULTATS++;
+    ecrireNombreDesResultats(nbr);
+}
+
+void ecrireNombreDesResultats(unsigned int nombreDesResultats)
+{
+    FILE *file = fopen("donnees\\autoIncrement\\autoincrementResultasIDs.txt", "w");
+    if (file == NULL)
+    {
+        perror("Error opening file");
+        return;
+    }
+
+    fprintf(file, "%u", nombreDesResultats);
+
+    fclose(file);
+}
+
 int chercherResultatParElectionId(unsigned int IdElection)
 {
-	FILE *fp;
-    int a;
-    fp = fopen("Resultats.txt", "r");
-    if (fp == NULL) {
-        printf("\nLe fichier n'a pas pu être ouvert") ;
-        return -1;
+    FILE *file = fopen("donnees\\resultats.txt", "r");
+
+    if (file == NULL)
+    {
+        perror("Erreur lors de l'ouverture du fichier");
+        return -1; // Error opening the file
     }
-    while (fscanf(fp, "%d", &a) != EOF) {
-        if (IdElection == a)
-		{
-			printf("\nLe resultat se trouve dans le fichier") ;
-            fclose(fp);
-            return 0;
+
+    char buffer[256];
+    while (fgets(buffer, sizeof(buffer), file) != NULL)
+    {
+        unsigned int id;
+        int jour, mois, anne;
+        // Add other fields as needed
+
+        if (sscanf(buffer, "#%u#%u#%d/%d/%d#%u#%u", &id, &IdElection, &jour, &mois, &anne) == 5)
+        {
+            fclose(file);
+            return id; // Found the result
+        }
+        else
+        {
+            // Handle parsing error
+            fprintf(stderr, "Error parsing result information in the line: %s\n", buffer);
         }
     }
-    printf("\nLe resultat ne se trouve pas dans le fichier") ;
-    fclose(fp);
-    return 1;
+
+    fclose(file);
+    return -1; // Result not found
 }
 
-// CrÃ©ez une fonction pour ajouter un Resultat dans le fichier .text.
 void ajouterResultat(Resultat resultat)
 {
-	FILE *fp;
-    fp = fopen("Resultats.txt", "a");
-    if (fp == NULL) 
-	{
-   	   printf("Fichier non trouvé !");
-		return;
+    FILE *file = fopen("donnees\\resultats.txt", "a");
+    if (file == NULL)
+    {
+        perror("Erreur lors de l'ouverture du fichier");
+        return;
     }
-    fprintf(fp, "\nIdResultat : %u # IdElection : %u # TotalVotes : %u # NombreOptionsVotes : %u ",resultat.IdResultat, resultat.IdElection, resultat.TotalVotes, resultat.NombreOptionsVotes);
-    ajouterEntiteDatee(resultat.DateResultat);
-    fclose(fp);
+
+    fprintf(file, "#%u#%u#%d/%d/%d#%u#%u\n",
+            resultat.IdResultat,
+            resultat.IdElection,
+            resultat.DateResultat.jour, resultat.DateResultat.mois, resultat.DateResultat.anne,
+            resultat.TotalVotes,
+            resultat.NombreOptionsVotes);
+
+    fclose(file);
+
+    printf("\nLe Resultat a ete ajoute avec succes.\n");
 }
-// CrÃ©ez une fonction pour supprimer un Resultat dans le fichier .text par son ID d'Ã©lection.
+
 void supprimerResultatParElectionId(unsigned int IdElection)
 {
-	FILE *fp, *temp;
-    char *buffer;
-    char *field;
-    Resultat re;
+    FILE *fileIn = fopen("donnees\\resultats.txt", "r");
+    FILE *fileOut = fopen("donnees\\temp_resultats.txt", "w");
 
-    fp = fopen("Resultats.txt", "r");
-    if (fp == NULL) {
-        printf("Fichier non trouvé !");
+    if (fileIn == NULL || fileOut == NULL)
+    {
+        perror("Erreur lors de l'ouverture du fichier");
         return;
     }
 
-    temp = fopen("temp.txt", "w");
-    if (temp == NULL) {
-        printf("Erreur lors de la création du fichier temporaire !");
-        return;
-    }
+    char buffer[512];
 
-    buffer = malloc(1000 * sizeof(char));
-    while (fgets(buffer, 1000, fp) != NULL) {
-        field = strtok(buffer, "#");
-        re.IdElection = atoi(field);
+    while (fgets(buffer, sizeof(buffer), fileIn) != NULL)
+    {
+        unsigned int currentId, currentElectionId;
+        int jour, mois, anne;
+        // Add other fields as needed
 
-        if(re.IdElection == IdElection) 
-		{
-            continue;
+        if (sscanf(buffer, "#%u#%u#%d/%d/%d#%u#%u", &currentId, &currentElectionId, &jour, &mois, &anne) == 5 && currentElectionId != IdElection)
+        {
+            fprintf(fileOut, "%s", buffer);
         }
-
-        fprintf(temp, "%s", buffer);
     }
 
-    fclose(fp);
-    fclose(temp);
-    free(buffer);
+    fclose(fileIn);
+    fclose(fileOut);
 
-    remove("Resultats.txt");
-    rename("temp.txt", "Resultats.txt");
-    printf("Le resultat a été supprimé avec succès !\n");
-}
-// CrÃ©ez une fonction pour saisir des donnÃ©es dans une structure Resultat Ã  partir de l'utilisateur.
-void saisirResultats(Resultat *resultat)
-{
-	resultat->IdResultat = ++C_IdR ;
-	printf("\nSaisissez l'ID de l'election :") ;
-	scanf("%u", &(resultat->IdElection)) ;
-	getchar() ;
-	printf("\nSaisissez la date du resultat :") ;
-	saisirDate(&(resultat->DateResultat));
-	printf("\nSaisissez le total de votes :") ;
-	scanf("%u", &(resultat->TotalVotes)) ;
-	getchar() ;
-	printf("\nSaisissez le nombre d'options de votes :") ;
-	scanf("%u", &(resultat->NombreOptionsVotes)) ;
-	getchar() ;
+    if (remove("donnees\\resultats.txt") != 0)
+    {
+        perror("Erreur lors de la suppression du fichier original");
+        return;
+    }
+
+    if (rename("donnees\\temp_resultats.txt", "donnees\\resultats.txt") != 0)
+    {
+        perror("Erreur lors du renommage du fichier temporaire");
+    }
+    else
+    {
+        printf("Le Resultat avec l'ID d'election %u a ete supprime avec succes.\n", IdElection);
+    }
 }
 
-// CrÃ©ez une fonction pour ajouter un Resultat dans un tableau dynamique
-void ajouterResultatTD()
-{
-	R = realloc(R, ++NOMBRE_DES_RESULTATS * sizeof(Resultat));
-	if(R == NULL)
-	{
-		printf("Barette memoire saturée !!");
-		return;
-	}
-	saisirResultats(R + NOMBRE_DES_RESULTATS - 1) ;
-}
-// CrÃ©ez une fonction pour afficher les resultats d'un d'un Election Donne.
 void afficherResultatParElectionId(unsigned int IdElection)
 {
-	int i;
-	for (i = 0; i < NOMBRE_DES_RESULTATS; i++)
-	{
-		if(R[i].IdElection == IdElection)
-		{
-			printf("\nIdResultat :%u", R[i].IdElection) ;
-			printf("\nIdElection :%u\n", R[i].IdElection) ;
-			afficherDate(R[i].DateResultat);
-			printf("\nTotalVotes :%s", R[i].TotalVotes) ;
-			printf("\nNombreOptionsVotes :%u", R[i].NombreOptionsVotes) ;
-			printf("\n-----------------------------------------------") ;
-		}
-	}
+    FILE *file = fopen("donnees\\resultats.txt", "r");
+
+    if (file == NULL)
+    {
+        perror("Erreur lors de l'ouverture du fichier");
+        return;
+    }
+
+    char buffer[256];
+
+    printf("\nDetails du Resultat de l'election avec l'ID %u :\n---------------------------\n", IdElection);
+
+    while (fgets(buffer, sizeof(buffer), file) != NULL)
+    {
+        unsigned int IdResultat, IdElectionFromFile, TotalVotes, NombreOptionsVotes;
+        int jour, mois, anne;
+        // Add other fields as needed
+
+        if (sscanf(buffer, "#%u#%u#%d/%d/%d#%u#%u", &IdResultat, &IdElectionFromFile, &jour, &mois, &anne, &TotalVotes, &NombreOptionsVotes) == 7 && IdElectionFromFile == IdElection)
+        {
+            printf("ID Resultat: %u | ID Election: %u | Date Resultat: %d/%d/%d | Total Votes: %u | Nombre Options Votes: %u\n",
+                   IdResultat, IdElectionFromFile, jour, mois, anne, TotalVotes, NombreOptionsVotes);
+            printf("---------------------------\n");
+        }
+    }
+
+    fclose(file);
 }

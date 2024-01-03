@@ -8,6 +8,10 @@ struct optionDeVote
     Chaine TitreOption;
     Chaine DescriptionOption;
     
+    //Proportion
+    unsigned int NombreVotes;
+    float Proportion;
+    
 };
 typedef struct optionDeVote OptionDeVote;
 
