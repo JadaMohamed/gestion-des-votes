@@ -6,17 +6,45 @@
 #include ".h\Categories.h"
 #include ".h\Elections.h"
 #include ".h\OptionsDeVotes.h"
-#include ".h\ProportionsVotes.h"
-#include ".h\Resultats.h"
 #include ".h\Roles.h"
 #include ".h\RolesAutorises.h"
 #include ".h\Utilisateurs.h"
 #include ".h\Votes.h"
 #include ".h\RolesDesUtilisateurs.h"
 
+int isUserHasOneRoleFromAutoriziedForElection(int idUser, int IdElection) {
+    int numberUserRoles, numberElectionRoles;
+    RolesDesUtilisateurs *userRoles = lesRolesDUnUtilisateur(idUser, &numberUserRoles);
+    RolesAutorise *electionRoles = lesRolesAutorisePouElection(IdElection, &numberElectionRoles);
+
+    if (userRoles == NULL || electionRoles == NULL) {
+        // Error occurred in reading roles
+        free(userRoles);
+        free(electionRoles);
+        return -1;  // or handle the error in your way
+    }
+
+    // Check if there is at least one common role
+    for (int i = 0; i < numberUserRoles; i++) {
+        for (int j = 0; j < numberElectionRoles; j++) {
+            if (userRoles[i].idRole == electionRoles[j].IdRole) {
+                // Found a common role
+                free(userRoles);
+                free(electionRoles);
+                return 1;  // User has at least one role authorized for the election
+            }
+        }
+    }
+
+    // No common roles found
+    free(userRoles);
+    free(electionRoles);
+    return 0;
+}
+
+
 void seConnecter()
 {
-	updateProportions(2);
 	int op;
 	do
 	{

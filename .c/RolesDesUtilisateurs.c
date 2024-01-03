@@ -3,6 +3,7 @@
 #include "..\.h\Chaine.h"
 #include "..\.h\Utilisateurs.h"
 #include "..\.h\Roles.h"
+#include "..\.h\RolesDesUtilisateurs.h"
 
 void affecterUnRoleAUntilisateur(unsigned int IdRole, unsigned int IdUtilisateur)
 {
@@ -100,7 +101,6 @@ void afficherRolesDUnUtilisateur(unsigned int IdUtilisateur)
     }
 
     char buffer[256];
-
     printf("\nRoles de l'utilisateur avec l'ID %u :\n---------------------------\n", IdUtilisateur);
 
     while (fgets(buffer, sizeof(buffer), file) != NULL)
@@ -124,4 +124,38 @@ void afficherRolesDUnUtilisateur(unsigned int IdUtilisateur)
     }
 
     fclose(file);
+}
+
+RolesDesUtilisateurs *lesRolesDUnUtilisateur(unsigned int IdUser, int *numberRoles) {
+    FILE *file = fopen("donnees\\rolesDesUtilisateurs.txt", "r");
+
+    if (file == NULL) {
+        perror("Erreur lors de l'ouverture du fichier");
+        return NULL;
+    }
+
+    RolesDesUtilisateurs *userRoles = NULL;
+    int count = 0;
+	unsigned int idR, idU;
+	
+    while (fscanf(file, "#%u#%u\n", &idR, &idU) == 2) {
+        if (idU == IdUser) {
+            count++;
+            // Resize the array to accommodate more roles
+            userRoles = realloc(userRoles, count * sizeof(RolesDesUtilisateurs));
+            if (userRoles == NULL) {
+                perror("Erreur lors de l'allocation de la mémoire");
+                fclose(file);
+                return NULL;
+            }
+            userRoles[count-1].idRole= idR;
+            userRoles[count-1].idUtilisateur = idU;
+        }
+    }
+
+    *numberRoles = count;
+
+    fclose(file);
+
+    return userRoles;
 }

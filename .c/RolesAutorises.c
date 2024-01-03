@@ -115,3 +115,38 @@ void afficherRoleAutoriseElection(unsigned int IdElection)
 
     fclose(file);
 }
+
+RolesAutorise *lesRolesAutorisePouElection(unsigned int ElectionId, int *numberRoles) {
+    FILE *file = fopen("donnees\\rolesAutorises.txt", "r");
+
+    if (file == NULL) {
+        perror("Erreur lors de l'ouverture du fichier");
+        return NULL;
+    }
+
+    RolesAutorise *electionRoles = NULL;
+    int count = 0;
+    unsigned int IdAutorise, IdElection, IdRole;
+
+    while (fscanf(file, "#%u#%u#%u\n", &IdAutorise, &IdElection, &IdRole) == 3) {
+        if (IdElection == ElectionId) {
+            count++;
+            // Resize the array to accommodate more roles
+            electionRoles = realloc(electionRoles, count * sizeof(RolesAutorise));
+            if (electionRoles == NULL) {
+                perror("Erreur lors de l'allocation de la mémoire");
+                fclose(file);
+                return NULL;
+            }
+            electionRoles[count-1].IdAutorise = IdAutorise;
+            electionRoles[count-1].IdElection = IdElection;
+            electionRoles[count-1].IdRole = IdRole;
+        }
+    }
+
+    *numberRoles = count;
+
+    fclose(file);
+
+    return electionRoles;
+}

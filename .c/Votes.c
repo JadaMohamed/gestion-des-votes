@@ -2,6 +2,8 @@
 #include "..\.h\Elections.h"
 #include "..\.h\OptionsDeVotes.h"
 #include <stdio.h>
+#include "..\.h\Date.h"
+#include "..\.h\Utilisateurs.h"
 
 #define MAX_OPTIONS 10
 
@@ -17,15 +19,34 @@ void voter()
 	unsigned int IdOption;
 	scanf("%u", &IdOption);
 	
-	Vote vote;
+	Utilisateur u;
+	u =  getConnectedUser();
+	int d;
 	
-	getCurrentDate(&(vote.DateVote));
-	vote.IdElection = IdElection;
-	vote.IdOption = IdOption;
+	d = isUserHasOneRoleFromAutoriziedForElection(u.IdUtilisateur,IdElection);
 	
-	ajouterVote(vote);
-	incrementerNombreDeVotes(IdOption);
-	updateProportions(IdElection);
+	if(d==1)
+	{
+		Vote vote;
+	
+		getCurrentDate(&(vote.DateVote));
+		vote.IdElection = IdElection;
+		vote.IdOption = IdOption;
+	
+		ajouterVote(vote);
+		incrementerNombreDeVotes(IdOption);
+		updateProportions(IdElection);
+	}
+	else if(d == -1)
+	{
+		printf("\nYou have no role !\n");
+	}
+	else
+	{
+		printf("\n You don't have the right to vote in this election!\n");
+	}
+	
+	
 	
 }
 
