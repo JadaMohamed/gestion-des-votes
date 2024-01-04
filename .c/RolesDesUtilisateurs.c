@@ -126,7 +126,8 @@ void afficherRolesDUnUtilisateur(unsigned int IdUtilisateur)
     fclose(file);
 }
 
-RolesDesUtilisateurs *lesRolesDUnUtilisateur(unsigned int IdUser, int *numberRoles) {
+RolesDesUtilisateurs *lesRolesDUnUtilisateur(unsigned int IdUser, int *numberRoles) 
+{
     FILE *file = fopen("donnees\\rolesDesUtilisateurs.txt", "r");
 
     if (file == NULL) {

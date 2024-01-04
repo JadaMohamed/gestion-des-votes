@@ -13,27 +13,17 @@ struct administrateur
 typedef struct administrateur Administrateur;
 
 Administrateur getConnectedAdministrateur();
-//Pour gerer l'auto-incrementation des Ids des Admins.
-unsigned int lireNombreDesAdmin();	void ecrireNombreDesAdmin(unsigned int nombreDesAdmin);	void ecrireNombreDesAdmin(unsigned int nombreDesAdmin);
 
-//Chercher administrateur dans la base de donnees (administrateurs.txt) par Email&Password (pour la connection des admins).
-int chercherAdministrateur(Chaine Email, Chaine MotDePasse);
-
-//Saisir les infos d'un nouvau administrateur a ajouter a la base de donnees.
+void AfficherConnectedAdministrateur();
+unsigned int lireNombreDesAdmin();
+void incrementerNombreDesAdmin();
+void ecrireNombreDesAdmin(unsigned int nombreDesAdmin);
 void saisirAdministrateur(Administrateur *admin);
+void ajouterAdministrateur();
+int chercherAdministrateur(Chaine Email, Chaine MotDePasse);
+void afficherAdministrateur(Administrateur admin);
+void afficherAdministrateurs();
+void supprimerAdministrateurParId();
+void supprimerAdministrateurParEmail(Chaine Email);
 
-//Afficher un administateur passe au paramerte.
-void afficherAdministrateur(Administrateur admin); //done
-
-//Afficher tout les administrateurs dans la base de donnee. (password exclu)
-void afficherAdministrateurs(); //done from table
-
-//Ajouter un administrateur a la base de donnee.
-void ajouterAdministrateur(); //done
-
-//supprimer un administrateur par id de la base de donnee.
-void supprimerAdministrateurParId(); //done from table
-
-//supprimer un administrateur par email de la base de donnee.
-void supprimerAdministrateurParEmail(Chaine Email); //done from table
 

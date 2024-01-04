@@ -14,31 +14,16 @@ struct election
 };
 typedef struct election Election;
 
+unsigned int lireNombreDesElection();
+void incrementerNombreDesElection();
+void ecrireNombreDesElection(unsigned int nombreDesElection);
 void DeclarerUneElection();
-
-// Créez une fonction pour chercher une Election dans le fichier .text avec son Id.
 int chercherElectionId(unsigned int IdElection);
-
-// Créez une fonction pour saisir des données dans une structure Election à partir de l'utilisateur.
 void saisirElection(Election *election);
-
-// Créez une fonction pour afficher les détails d'une structure Election.
-void afficherElection(Election election);
-
-// Créez une fonction pour afficher les détails des structures Elections.
 void afficherElections();
-
-// Créez une fonction pour ajouter une Election dans le fichier .text.
 void ajouterElection(Election election);
-
-// Créez une fonction pour supprimer une Election dans le fichier .text par son ID.
+void ajouterElectionTD();
 void supprimerElectionParId(unsigned int IdElection);
-
-// Créez une fonction pour afficher des Election d'une periode donnee.
-void afficherElectionsParDate(Date* dateDebut, Date* dateFin);
-
-// Créez une fonction pour afficher les détails des Elections d'une category donnee .
 void afficherElectionsParCategorie(unsigned int IdCategorie);
-
-// Créez une fonction pour chercher les Elections d'un Administareur par son Id.
-int chercherAdminElections(unsigned int IdAdmin);
+void afficherElectionParId(unsigned int IdElection);
+void afficherLesDetailesDUneElectionParId(unsigned int IdElection);

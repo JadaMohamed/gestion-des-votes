@@ -13,6 +13,6 @@ void menuUtilisateurs();
 
 //Les interfaces back-office de l'utilisateur.
 void menuUtilisateurPrincipal(); 
-
+int isUserHasOneRoleFromAutoriziedForElection(int idUser, int IdElection) ;
 void seConnecterUtilisateur();
 void seDeConnecterUtilisateur();

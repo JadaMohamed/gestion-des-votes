@@ -14,21 +14,10 @@ struct date
 };
 typedef struct date Date;
 
-// Créez une fonction pour saisir des données dans une structure EntiteDatee à partir de l'utilisateur.
-void saisirDate(Date *entiee);
-
-// Créez une fonction pour afficher les détails d'une structure Date.
-void afficherDate(Date entiee);
-
-// Créez une fonction pour ajouter une EntiteDatee dans le fichier .text.
+void saisirDate(Date *entite);
+void afficherDate(Date entite);
 void ajouterEntiteDatee(Date entite);
-
-// Compare two dates and return:
-//   -1 if date1 is earlier than date2
-//    0 if date1 is equal to date2
-//    1 if date1 is later than date2
 int comparerDates(Date date1, Date date2);
+void getCurrentDate(Date *date);
 
-#endif // DATE_H
-
-
+#endif

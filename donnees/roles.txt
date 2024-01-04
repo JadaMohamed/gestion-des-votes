@@ -1,3 +1,7 @@
 #0#Employee
 #2#Chef de service
 #3#Directeur
+#4#Chef de service
+#5#Chef projet
+#6#Delegue service informatique
+#7#v 

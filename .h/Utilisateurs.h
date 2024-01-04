@@ -46,3 +46,11 @@ void afficherUtilisateurs();
 void utilisateurAUnRole(unsigned int IdRole, unsigned int IdUtilisateur);
 
 int estUtilisateurValide(unsigned int IdUtilisateur);
+
+void afficherUtilisateurParEmail(Chaine Email);
+
+void changerMotDePasse(Chaine Email, char *nouveauMotDePasse);
+
+int chercherUtilisateur(Chaine Email, Chaine MotDePasse);
+
+void AfficherConnectedUser();

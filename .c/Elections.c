@@ -4,6 +4,7 @@
 #include "..\.h\Administrateurs.h"
 #include "..\.h\Chaine.h"
 #include "..\.h\Date.h"
+#include "..\.h\Categories.h"
 #include "..\.h\RolesAutorises.h"
 #include "..\.h\OptionsDeVotes.h"
 
@@ -237,17 +238,6 @@ void ajouterElection(Election election)
             election.IdAdmin);
 
     fclose(file);
-    
-//    Resultat resultat;
-//    
-//    unsigned int nbr = lireNombreDesResultats();
-//    resultat.IdResultat = nbr;
-//    incrementerNombreDesResultats(nbr+1);
-//    
-//    getCurrentDate(&(resultat.DateResultat));
-//    resultat.TotalVotes = 0;
-//    
-//    void ajouterResultat(resultat);
     
     printf("\nL'Election a ete ajoutee avec succes.\n");
 }

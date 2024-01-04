@@ -28,11 +28,6 @@ unsigned int lireNombreDesCategorie()
     return nombreDesCategorie;
 }
 
-void incrementerNombreDesCategorie()
-{
-    NOMBRE_DES_CATEGORIES++;
-    ecrireNombreDesCategorie(NOMBRE_DES_CATEGORIES);
-}
 
 void ecrireNombreDesCategorie(unsigned int nombreDesCategorie)
 {
@@ -46,6 +41,12 @@ void ecrireNombreDesCategorie(unsigned int nombreDesCategorie)
     fprintf(file, "%u", nombreDesCategorie);
 
     fclose(file);
+}
+
+void incrementerNombreDesCategorie()
+{
+    NOMBRE_DES_CATEGORIES++;
+    ecrireNombreDesCategorie(NOMBRE_DES_CATEGORIES);
 }
 
 

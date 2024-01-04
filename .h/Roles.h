@@ -7,18 +7,13 @@ struct roles
 };
 typedef struct roles Roles; 
 
-// Créez une fonction pour saisir des données dans une structure Role à partir de l'utilisateur.
+unsigned int lireNombreDesRoles();
+void incrementerNombreDesRoles();
+void ecrireNombreDesRoles(unsigned int nombreDesRoles);
 void saisirRole(Roles *role);
-
-// Créez une fonction pour afficher les détails d'une structure Role.
 void afficherRole(Roles role);
-
-// Créez une fonction pour ajouter un Role dans le fichier .text.
 void ajouterRole(Roles role);
-
-// Créez une fonction pour supprimer un Role dans le fichier .text par son ID.
+void afficherToutLesRoles();
 void supprimerRoleParId(unsigned int IdRole);
-
 int estRoleValide(unsigned int IdRole);
-
 void afficherRoleParId(unsigned int IdRole);

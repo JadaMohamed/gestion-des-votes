@@ -10,3 +10,4 @@ void ajouterRolesDesUtilisateur(unsigned int IdRole, unsigned int IdUtilisateur)
 void affecterUnRoleAUntilisateur(unsigned int IdRole, unsigned int IdUtilisateur);
 void supprimerRolesDesUtilisateur(unsigned int IdRole, unsigned int IdUtilisateur);
 void afficherRolesDUnUtilisateur(unsigned int IdUtilisateur);
+RolesDesUtilisateurs *lesRolesDUnUtilisateur(unsigned int IdUser, int *numberRoles);

@@ -82,11 +82,6 @@ void ajouterRoleAutorise(RolesAutorise roleAutorise)
     printf("\nLe RoleAutorise a ete ajoute avec succes.\n");
 }
 
-void supprimerRoleAutoriseParId(unsigned int IdAutorise)
-{
-    // Implement the logic to remove a RoleAutorise from the file by Id
-}
-
 void afficherRoleAutoriseElection(unsigned int IdElection)
 {
     FILE *file = fopen("donnees\\rolesAutorises.txt", "r");
@@ -116,7 +111,8 @@ void afficherRoleAutoriseElection(unsigned int IdElection)
     fclose(file);
 }
 
-RolesAutorise *lesRolesAutorisePouElection(unsigned int ElectionId, int *numberRoles) {
+RolesAutorise *lesRolesAutorisePouElection(unsigned int ElectionId, int *numberRoles) 
+{
     FILE *file = fopen("donnees\\rolesAutorises.txt", "r");
 
     if (file == NULL) {

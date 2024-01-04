@@ -13,7 +13,8 @@
 #include <time.h>
 #include ".h\RolesDesUtilisateurs.h"
 
-int isUserHasOneRoleFromAutoriziedForElection(int idUser, int IdElection) {
+int isUserHasOneRoleFromAutoriziedForElection(int idUser, int IdElection) 
+{
     int numberUserRoles, numberElectionRoles;
     RolesDesUtilisateurs *userRoles = lesRolesDUnUtilisateur(idUser, &numberUserRoles);
     RolesAutorise *electionRoles = lesRolesAutorisePouElection(IdElection, &numberElectionRoles);
@@ -499,7 +500,7 @@ void menuUtilisateurPrincipal()
 	{
 		case 1:
 		{
-			printf("\nChanger le mot de passe : \-------------------\nOld password : ");
+			printf("\nChanger le mot de passe : \n-------------------\nOld password : ");
 			Utilisateur u;
 			u = getConnectedUser();
 			Chaine oldPassword;
@@ -539,7 +540,7 @@ void menuUtilisateurPrincipal()
 			break;
 		}
 		case 4:
-			printf("\nAfficher mes roles : \-------------------\n");
+			printf("\nAfficher mes roles : \n-------------------\n");
 			Utilisateur u;
 			u = getConnectedUser();
 			afficherRolesDUnUtilisateur(u.IdUtilisateur);
@@ -588,3 +589,4 @@ void seConnecterUtilisateur()
     getchar();
     menuUtilisateurPrincipal();
 }
+
